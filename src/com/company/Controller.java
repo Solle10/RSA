@@ -1,13 +1,29 @@
 package com.company;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Scanner;
-
-import static com.company.FileHandler.readKey;
 
 
 public class Controller {
 
         static Scanner sc = new Scanner(System.in);
+
+
+        public static KeyPair readKey(String fileName) {
+        KeyPair key = null;
+        try {
+            FileInputStream fileIn = new FileInputStream(fileName);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            key = (KeyPair) in.readObject();
+            in.close();
+            System.out.println("Read key from " + fileName);
+        } catch (IOException | ClassNotFoundException i) {
+            i.printStackTrace();
+        }
+        return key;
+    }
 
         public Controller() {
             String encrypted = "";
@@ -15,13 +31,13 @@ public class Controller {
 
 
             while (true) {
-                System.out.println("--------Welcome to generate and Encrypt/decrypt messages------------");
+                System.out.println("--------Welcome to generate keys and Encrypt/decrypt messages------------");
 
                 System.out.println("1. Generate Keys & Save Keys");
                 System.out.println("2. Load Keys");
                 System.out.println("3. Encrypt String message");
                 System.out.println("4. Decrypt String message");
-                System.out.println("5. Encrypt text in txt.file");
+                System.out.println("5. Encrypt/decrypt text in txt.file");
                 System.out.println("6. Decrypt text in txt.file");
                 System.out.println();
                 System.out.println("9. Exit");
