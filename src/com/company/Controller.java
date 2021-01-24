@@ -15,6 +15,8 @@ public class Controller {
 
 
             while (true) {
+                System.out.println("--------Welcome to generate and Encrypt/decrypt messages------------");
+
                 System.out.println("1. Generate Keys & Save Keys");
                 System.out.println("2. Load Keys");
                 System.out.println("3. Encrypt String message");
@@ -22,7 +24,7 @@ public class Controller {
                 System.out.println("5. Encrypt text in txt.file");
                 System.out.println("6. Decrypt text in txt.file");
                 System.out.println();
-                System.out.println("7. Exit");
+                System.out.println("9. Exit");
 
                 String menu = sc.nextLine();
 
